@@ -1,0 +1,27 @@
+main section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
+}
+
+.day {
+  height: 10px;
+  width: 10px;
+  background-color: transparent;
+}
+
+.day.alcoholtrue {
+  background-color: var(--violet);
+}
+
+.day.friendstrue {
+  background-color: var(--orange-carrot);
+}
+
+.day.healthyFoodtrue {
+  background-color: var(--green);
+}
+
+#display-data {
+  margin-top: 10px;
+}

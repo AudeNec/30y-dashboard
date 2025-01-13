@@ -1,0 +1,27 @@
+nav {
+  position: absolute;
+  bottom: 0;
+
+  width: 100vw;
+  height: 10vh;
+
+  display: flex;
+  align-items: center;
+
+  border-top: var(--main-color) solid 1px;
+}
+
+nav a {
+  font-family: "Sarala", sans-serif;
+  text-decoration: none;
+  color: var(--background-color);
+
+  height: 10vh;
+  width: 50vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--main-color);
+}

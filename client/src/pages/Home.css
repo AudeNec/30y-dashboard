@@ -1,0 +1,25 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  border-bottom: var(--main-color) solid 1px;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+main {
+  margin: 1rem;
+  height: 50vh;
+}
+
+main form li {
+  list-style: none;
+}
+
+main form input.input-number {
+  width: 20px;
+}

@@ -1,18 +1,19 @@
 import express from "express";
+import dailyActions from "./modules/daily/dailyActions";
+import propertyActions from "./modules/property/propertyActions";
 
 const router = express.Router();
 
-/* ************************************************************************* */
-// Define Your API Routes Here
-/* ************************************************************************* */
+router.get("/api/daily", dailyActions.browse);
+router.post("/api/daily", dailyActions.add);
 
-// Define item-related routes
-import itemActions from "./modules/item/itemActions";
+router.get("/api/daily/:date", dailyActions.read);
+router.put("/api/daily/:date", dailyActions.edit);
 
-router.get("/api/items", itemActions.browse);
-router.get("/api/items/:id", itemActions.read);
-router.post("/api/items", itemActions.add);
-
-/* ************************************************************************* */
+router.get(
+  "/api/properties/:property/sum",
+  propertyActions.browseAndSumProperty,
+);
+// router.get("/api/properties/:property", propertyActions.browseProperty);
 
 export default router;
