@@ -12,15 +12,32 @@ type Day = {
   friends: boolean;
   healthy_food: boolean;
   working: boolean;
+  clean: boolean;
 };
 
 class dailyRepository {
   async create(day: Omit<Day, "id">) {
-    const [result] = await databaseClient.query<Result>(
-      "insert into daily_data (id, date, mood, money_spent, sport, alcohol, friends, healthy_food, working) values (?)",
-      [day],
-    );
-    return result.insertId;
+    try {
+      const formattedDate = new Date(day.date).toISOString().split("T")[0];
+      const [result] = await databaseClient.query<Result>(
+        "INSERT INTO daily_data (date, mood, money_spent, sport, alcohol, friends, healthy_food, working, clean) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [
+          formattedDate,
+          day.mood,
+          day.money_spent,
+          day.sport,
+          Number(day.alcohol),
+          Number(day.friends),
+          Number(day.healthy_food),
+          Number(day.working),
+          Number(day.clean),
+        ],
+      );
+      return result.insertId;
+    } catch (error) {
+      console.error("Error inserting data into daily_data:", error);
+      throw error;
+    }
   }
 
   async read(date: Date) {

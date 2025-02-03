@@ -21,6 +21,7 @@ class DailyDataSeeder extends AbstractSeeder {
         friends: Math.round(Math.random()),
         healthy_food: Math.round(Math.random()),
         working: Math.round(Math.random()),
+        clean: Math.round(Math.random()),
         refName: `daily_data_${i}`,
       };
 

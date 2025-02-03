@@ -8,7 +8,7 @@ function Sum() {
   });
 
   const getSum = useCallback((property: string) => {
-    fetch(`http://localhost:3310/api/daily/sum-property/${property}`)
+    fetch(`http://localhost:3310/api/properties/${property}/sum`)
       .then((res) => res.json())
       .then((data) =>
         setSums((prevSums) => ({ ...prevSums, [property]: data[0].sum })),
@@ -22,7 +22,7 @@ function Sum() {
   return (
     <>
       {sums.sport ? (
-        <p>You did {sums.sport} minutes of sport (xxx) per week.</p>
+        <p>You did {sums.sport} minutes of sport ( xxx per week).</p>
       ) : (
         <></>
       )}

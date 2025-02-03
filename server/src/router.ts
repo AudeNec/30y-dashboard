@@ -6,14 +6,13 @@ const router = express.Router();
 
 router.get("/api/daily", dailyActions.browse);
 router.post("/api/daily", dailyActions.add);
-
 router.get("/api/daily/:date", dailyActions.read);
 router.put("/api/daily/:date", dailyActions.edit);
 
+router.get("/api/properties/:property", propertyActions.browse);
 router.get(
   "/api/properties/:property/sum",
   propertyActions.browseAndSumProperty,
 );
-// router.get("/api/properties/:property", propertyActions.browseProperty);
 
 export default router;

@@ -1,12 +1,13 @@
 type DayType = {
   date: Date;
   mood: number;
-  moneySpent: number;
+  money_spent: number;
   sport: number;
   alcohol: boolean;
   friends: boolean;
-  healthyFood: boolean;
+  healthy_food: boolean;
   working: boolean;
+  clean: boolean;
 };
 
 export default DayType;

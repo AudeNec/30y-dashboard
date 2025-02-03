@@ -6,34 +6,37 @@ function Form({ date }: { date: string }) {
   const [dailyData, setDailyData] = useState<DayType>({
     date: new Date(date),
     mood: 5,
-    moneySpent: 0,
+    money_spent: 0,
     sport: 0,
     alcohol: false,
     friends: false,
-    healthyFood: false,
+    healthy_food: false,
     working: false,
+    clean: false,
   });
 
   const [modify, setModify] = useState<boolean>(false);
 
   const handleChanges = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, type, checked, value } = event.target;
+
     setDailyData((prev) => ({
       ...prev,
-      [event.target.name]: event.target.value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!modify) {
-      fetch("http://localhost:3310/api/dailyData", {
+      fetch("http://localhost:3310/api/daily", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dailyData),
       });
       setModify(true);
     } else {
-      fetch(`http://localhost:3310/api/dailyData/${Date.parse(date)}`, {
+      fetch(`http://localhost:3310/api/daily/${Date.parse(date)}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dailyData),
@@ -48,6 +51,7 @@ function Form({ date }: { date: string }) {
           type="checkbox"
           name="working"
           className="checkbox"
+          checked={dailyData.working}
           onChange={handleChanges}
         />
         <label htmlFor="working">I worked.</label>
@@ -57,6 +61,7 @@ function Form({ date }: { date: string }) {
           type="checkbox"
           name="friends"
           className="checkbox"
+          checked={dailyData.friends}
           onChange={handleChanges}
         />
         <label htmlFor="friends">I met with friend(s).</label>
@@ -64,27 +69,39 @@ function Form({ date }: { date: string }) {
       <li>
         <input
           type="checkbox"
-          name="healthyFood"
+          name="healthy_food"
           className="checkbox"
+          checked={dailyData.healthy_food}
           onChange={handleChanges}
         />
-        <label htmlFor="healthyFood">I ate healthy.</label>
+        <label htmlFor="healthy_food">I ate healthy.</label>
       </li>
       <li>
         <input
           type="checkbox"
           name="alcohol"
           className="checkbox"
+          checked={dailyData.working}
           onChange={handleChanges}
         />
         <label htmlFor="alcohol">I drank alcohol.</label>
+      </li>
+      <li>
+        <input
+          type="checkbox"
+          name="clean"
+          className="checkbox"
+          checked={dailyData.clean}
+          onChange={handleChanges}
+        />
+        <label htmlFor="alcohol">I cleaned my house.</label>
       </li>
       <li>
         <label htmlFor="moneySpent">
           I spent&nbsp;
           <input
             type="text"
-            name="moneySpent"
+            name="money_spent"
             className="input-number"
             placeholder="0"
             onChange={handleChanges}

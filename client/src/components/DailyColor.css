@@ -10,15 +10,15 @@ main section {
   background-color: transparent;
 }
 
-.day.alcoholtrue {
+.day.alcohol1 {
   background-color: var(--violet);
 }
 
-.day.friendstrue {
+.day.friends1 {
   background-color: var(--orange-carrot);
 }
 
-.day.healthyFoodtrue {
+.day.healthyFood1 {
   background-color: var(--green);
 }
 

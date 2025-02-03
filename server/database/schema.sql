@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `30y_db`.`daily_data` (
   `friends` TINYINT NULL,
   `healthy_food` TINYINT NULL,
   `working` TINYINT NULL,
+  `clean` TINYINT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -66,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `30y_db`.`content` (
   `difficulty` INT NULL,
   `content_type_id` INT NOT NULL,
   `platform_id` INT NOT NULL,
+  `img` INT NULL,
   PRIMARY KEY (`id`, `content_type_id`),
   INDEX `fk_content_content_type_idx` (`content_type_id` ASC) VISIBLE,
   INDEX `fk_content_platform1_idx` (`platform_id` ASC) VISIBLE,
